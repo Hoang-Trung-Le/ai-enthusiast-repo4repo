@@ -1,0 +1,24 @@
+name: awesome-lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.md'
+
+jobs:
+  awesome-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: awesome-lint
+        uses: max/awesome-lint@v2
+        with:
+          args: --no-allow-duplicates --no-allow-missing-links --no-allow-missing-descriptions
+
